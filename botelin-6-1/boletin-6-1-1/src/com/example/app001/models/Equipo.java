@@ -20,7 +20,8 @@ public class Equipo {
      */
     public Equipo(String nombreEq, List<Alumno> listaAlumnos) {
         this.nombreEq = nombreEq;
-        this.listaAlumnos = listaAlumnos;
+        // Si listaAlumnos es null, se inicializa con una lista vacía. Si no es null, se usa la lista pasada.
+        this.listaAlumnos = (listaAlumnos != null) ? listaAlumnos : new ArrayList<>();
     }
 
     /**
@@ -66,10 +67,9 @@ public class Equipo {
      */
     @Override
     public String toString() {
-        return "Equipo{" +
-                "nombreEq='" + nombreEq + '\'' +
-                ", listaAlumnos=" + listaAlumnos +
-                '}';
+        return String.format("Equipo: %s\nAlumnos: %s",
+                nombreEq,
+                listaAlumnos.isEmpty() ? "No hay alumnos" : listaAlumnos);
     }
 
 
